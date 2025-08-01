@@ -1,0 +1,20 @@
+name: Run sysinfo script on push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Make script executable
+        run: chmod +x sysinfo.sh
+
+      - name: Run the sysinfo script
+        run: ./sysinfo.sh
